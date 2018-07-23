@@ -1,0 +1,19 @@
+{
+  "name": "aeonwebapp",
+  "version": "1.0.0",
+  "description": "Feedback Web Application",
+  "main": "index.js",
+  "engines": {
+    "node": "10.0.0",
+    "npm": "6.2.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Toni Estabillo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
