@@ -47,7 +47,7 @@ app.use("/", (req, res) => {
 });
 
 // Fav Icon
-app.use("/favicon.ico", express.static("public/favicon.ico"));
+app.use("/favicon.ico", express.static("favicon.ico"));
 
 //Environment variables
 //PRODUCTION environment - process.env.PORT - sent by Heroku
