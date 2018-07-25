@@ -25,11 +25,13 @@ passport.deserializeUser((id, done) => {
 passport.use(
   //Client ID and Client Secret -  Requirements to access API
   //CallbackURL - handles token and user profile afer authentication
+  // Proxy config will allow localhost:5000 or heroku domain https://arcane-ocean-69503.herokuapp.com/
   new GoogleStrategy(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       // Access Token - Additional requests in behalf of the user
