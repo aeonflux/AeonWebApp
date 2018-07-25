@@ -46,6 +46,8 @@ app.use("/", (req, res) => {
   res.send({ message: "Welcome to Aeon Hub" });
 });
 
+// Fav Icon
+
 //Environment variables
 //PRODUCTION environment - process.env.PORT - sent by Heroku
 //DEVELOPMENT environment - default
