@@ -33,7 +33,7 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // Access Token - Additional requests in behalf of the user
       // Email Contact List Access
       console.log("Access Token", accessToken);
@@ -43,19 +43,15 @@ passport.use(
       console.log("Profile", profile);
 
       // Duplicate Record Checking
-      User.findOne({ googleID: profile.id }).then(existingUser => {
-        // Duplicate Found
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          // Saving a User Instance to DB
-          new User({
-            googleID: profile.id
-          })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleID: profile.id });
+      // Duplicate Found
+      if (existingUser) {
+        done(null, existingUser);
+      } else {
+        // Saving a User Instance to DB
+        const user = await new User({ googleID: profile.id }).save();
+        done(null, user);
+      }
     }
   )
 );
