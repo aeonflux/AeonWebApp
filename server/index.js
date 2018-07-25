@@ -41,6 +41,11 @@ app.use(passport.session());
 //Routes Usage
 require("./routes/authRoutes")(app);
 
+// Verifies root route
+app.use("/", (req, res) => {
+  res.send({ message: "Welcome to Aeon Hub" });
+});
+
 //Environment variables
 //PRODUCTION environment - process.env.PORT - sent by Heroku
 //DEVELOPMENT environment - default
