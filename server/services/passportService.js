@@ -9,6 +9,19 @@ const User = mongoose.model("user");
 // Key Imports
 const keys = require("../config/keys");
 
+// Generates identifying piece of user
+passport.serializeUser((user, done) => {
+  //Reference generated ID by MongoDB
+  done(null, user.id);
+});
+
+// Convert ID in Cookie to an actual user
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
+
 passport.use(
   //Client ID and Client Secret -  Requirements to access API
   //CallbackURL - handles token and user profile afer authentication

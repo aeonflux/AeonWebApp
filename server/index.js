@@ -12,11 +12,31 @@ require("./models/User");
 // Services Declaration
 require("./services/passportService");
 
+// Cookie Session
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+
 // Connect to MongoDB Collections
 mongoose.connect(keys.mongoURI);
 
 //Initialize Application
 const app = express();
+
+//
+app.use(
+  cookieSession({
+    // 30 days
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    // encryption
+    keys: [keys.cookieKey]
+  })
+);
+
+// Initialize Passport within app
+app.use(passport.initialize());
+
+// Initialize Passport session in app
+app.use(passport.session());
 
 //Routes Usage
 require("./routes/authRoutes")(app);
