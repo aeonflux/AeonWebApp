@@ -22,7 +22,7 @@ import reducers from "./reducers";
 
 // Houses All Redux Setup
 // Creates a store
-const store = createStore(() => reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 // Renders components on screen
 ReactDOM.render(

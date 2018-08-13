@@ -1,22 +1,61 @@
 import React, { Component } from "react";
+//Hookup from redux store
+import { connect } from "react-redux";
+//Link Router
+import { Link } from "react-router-dom";
+
+//Payment Component
+import Payments from "./Payments";
 
 class Header extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      // Getting login status
+      case null:
+        return "awaiting";
+      // User not logged in
+      case false:
+        return (
+          <li>
+            <a href="/auth/google">Login with Google</a>
+          </li>
+        );
+      // User is logged in
+      default:
+        return [
+          <li key="1">
+            <Payments />
+          </li>,
+          <li key="3" style={{ margin: "0 10px" }}>
+            Credits : {this.props.auth.credits}
+          </li>,
+          <li key="2">
+            <a href="/api/logout">Logout</a>
+          </li>
+        ];
+    }
+  }
+
   render() {
+    console.log(this.props);
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="" className="brand-logo">
+          {/* If user is logged in => go to /orders else return to root */}
+          <Link to={this.props.auth ? "/orders" : "/"} className="brand-logo">
             Aeon
-          </a>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <a href="">Login with Google</a>
-            </li>
+          </Link>
+          <ul id="nav-mobile" className="right">
+            {this.renderContent()}
           </ul>
         </div>
       </nav>
     );
   }
 }
+//connect helpyer
 
-export default Header;
+function mapStatetoProps({ auth }) {
+  return { auth };
+}
+export default connect(mapStatetoProps)(Header);

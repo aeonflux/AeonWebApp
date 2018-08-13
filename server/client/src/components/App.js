@@ -12,10 +12,10 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
+import Landing from "./Landing";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const OrderNew = () => <h2>OrderNew</h2>;
-const Landing = () => <h2>Landing</h2>;
 
 class App extends Component {
   // Component is rendered into the screen
@@ -25,7 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <BrowserRouter>
           <div>
             <Header />
@@ -35,7 +35,7 @@ class App extends Component {
           </div>
         </BrowserRouter>
       </div>
-    );
+    ); // <div className="container">
   }
 }
 

@@ -11,7 +11,32 @@ module.exports = app => {
   );
 
   // Authentication, Profile Request
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/orders");
+    }
+  );
+
+  // Facebook Auth
+
+  app.get(
+    "/auth/facebook",
+    passport.authenticate("facebook", {
+      authType: "rerequest",
+      scope: ["email"]
+    })
+  );
+
+  app.get(
+    "/auth/facebook/callback",
+    passport.authenticate("facebook", { failureRedirect: "/login" }),
+    function(req, res) {
+      // Successful authentication, redirect home.
+      res.redirect("/");
+    }
+  );
 
   // Retrieves Current User
   app.get("/api/current_user", (req, res) => {
@@ -26,7 +51,7 @@ module.exports = app => {
   app.get("/api/logout", (req, res) => {
     // Removes the current cookie
     req.logout();
-    // Must return null response
-    res.send(req.user);
+    // Must return to root page/unlogged-in page
+    res.redirect("/");
   });
 };
