@@ -20,3 +20,5 @@ export const handleToken = token => async dispatch => {
     payload: res.data
   });
 };
+
+// research on redux-promise

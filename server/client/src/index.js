@@ -17,8 +17,8 @@ import App from "./components/App";
 import reducers from "./reducers";
 
 // Development only axios helpers!
-// import axios from "axios";
-// window.axios = axios;
+import axios from "axios";
+window.axios = axios;
 
 // Houses All Redux Setup
 // Creates a store

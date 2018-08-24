@@ -13,6 +13,9 @@ const bodyParser = require("body-parser");
 
 // Creates a Collection 'User'
 require("./models/User");
+// Creates a Collection 'Survey'
+require("./models/Survey");
+// require("./models/Recipient");
 
 // Services Declaration
 require("./services/passportService");
@@ -51,6 +54,8 @@ app.use(passport.session());
 require("./routes/authRoutes")(app);
 // For Billing
 require("./routes/billingRoutes")(app);
+// For Survey
+require("./routes/surveyRoutes")(app);
 
 // Express Setup - Run during production (Heroku)
 if (process.env.NODE_ENV === "production") {
@@ -73,7 +78,7 @@ app.use("/", (req, res) => {
 });
 
 // Fav Icon
-app.use("/favicon.ico", express.static("favicon.ico"));
+// app.use("/favicon.ico", express.static("favicon.ico"));
 
 //Environment variables
 //PRODUCTION environment - process.env.PORT - sent by Heroku

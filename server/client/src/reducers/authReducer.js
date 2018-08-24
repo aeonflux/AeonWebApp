@@ -9,3 +9,9 @@ export default function(state = null, action) {
       return state;
   }
 }
+
+//don't push to an array
+// adds a value to the current state
+
+//using [action.payload.data, ...state]
+// creates a copy before adding a new value

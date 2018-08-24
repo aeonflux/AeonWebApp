@@ -40,10 +40,24 @@ class Header extends Component {
     console.log(this.props);
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div
+          className="nav-wrapper"
+          style={{
+            backgroundColor: "#C0C2DC",
+            padding: "20px"
+          }}
+        >
           {/* If user is logged in => go to /orders else return to root */}
           <Link to={this.props.auth ? "/orders" : "/"} className="brand-logo">
-            Aeon
+            <div data-aos="flip-right">
+              <img
+                style={{
+                  border: "20px #4C3DA6 solid",
+                  borderRadius: "50px"
+                }}
+                src="https://image.ibb.co/fSVGF9/EON_1.png"
+              />
+            </div>
           </Link>
           <ul id="nav-mobile" className="right">
             {this.renderContent()}
@@ -59,3 +73,5 @@ function mapStatetoProps({ auth }) {
   return { auth };
 }
 export default connect(mapStatetoProps)(Header);
+
+//event.preventDefault
