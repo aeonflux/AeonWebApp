@@ -7,6 +7,8 @@ Aeon (Version1.0) is a web application for getting feedback from your clients.
  - User Management(Authentication) - Google OAuth Flow
  - Credits Add/Charge  ( Test Mode ) - Stripe JS
  - Survey Generation and Analytics (Custom Templates, Bulk Sending) - SendGrid 
+ - Data-AOS Library (Animations)
+ - Material UI (CSS)
 
 # Preview
 ![alt text](https://preview.ibb.co/gUaYTU/Screen_Shot_2018_08_24_at_7_04_04_PM.png "")
@@ -23,8 +25,8 @@ Aeon (Version1.0) is a web application for getting feedback from your clients.
    To locally run the application
    
    - Clone this repository
-   - npm install 
+   - To install depedencies in package.json, npm install 
    - Setup dev keys
      - In the folder /config , create a dev.js file
-     - Send a request to my email  (tonimaristelacarpio@gmail.com)  to give you a copy of        the development keys
+     - Send a request to my email  (tonimaristelacarpio@gmail.com)  to give you a copy of the development keys
    - npm run dev
