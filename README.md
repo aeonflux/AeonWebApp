@@ -1,6 +1,6 @@
 # Description
 
-Aeon (Version1.0) is a web application for getting feedback from your clients. 
+Aeon (Version1.0) is a React web application for getting feedback from your clients.This uses Google OAuth Flow, Stripe JS, SendGrid, Data-AOS animations and Material UI for CSS.
 # Features 
 ![alt text](https://image.ibb.co/gjvQ8U/libraries.png "")
 
